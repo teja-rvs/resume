@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      body {
+        margin: 30px;
+        padding: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .name {
+        display: flex;
+        flex-direction: row;
+        font-size: 100px;
+      }
+      .resume-body {
+        display: flex;
+        flex-direction: row;
+      }
+      .left {
+        flex: 80;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid black;
+        padding-right: 5px;
+      }
+      .right {
+        flex: 20;
+        display: flex;
+        flex-direction: column;
+      }
+      .heading {
+        color: teal;
+        font-size: 30px;
+        margin-top: 20px;
+      }
+      .company {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+      }
+      .company-details {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .company .name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .responsibilities {
+        margin-top: 10px;
+      }
+      .responsibilities div:before {
+        content: ">";
+        margin-right: 6px;
+      }
+      .responsibilities div {
+        line-height: 1.6;
+      }
+      .duration {
+        color: #737373;
+      }
+      .section {
+        margin-left: 10px;
+        text-align: left;
+      }
+      @media (max-width: 800px) {
+        .resume-body {
+          flex-direction: column;
+        }
+        .left {
+          flex: 100;
+          border: none;
+        }
+        .right {
+          flex: 100;
+        }
+        .section {
+          margin-left: 0px;
+        }
+        .company-details {
+          flex-direction: column;
+        }
+      }
+    </style>
+    <title>RVS Teja</title>
+  </head>
+  <body>
+    <div class="name">R V S Teja</div>
+    <div class="resume-body">
+      <div class="left">
+        <div class="profile">
+          <div class="heading">Profile</div>
+          <div class="content">
+            Passionate software engineer with 5 years of experience creating
+            high-quality, scalable, and high-performance web applications
+            seeking full stack opportunities.
+          </div>
+        </div>
+        <div class="employement-history">
+          <div class="heading">Employment History</div>
+          <div class="company">
+            <div class="company-details">
+              <div class="name">Qvantel (Telecom IT)</div>
+              <div class="location">Hyderabad, Dubai</div>
+            </div>
+            <div class="duration">September 2020 - Present</div>
+            <div class="responsibilities">
+              <div>
+                Implemented invoice generation application for billing system
+                for various clients.
+              </div>
+              <div>
+                Integrated Bangla and Russian fonts for PDF generation.
+              </div>
+            </div>
+          </div>
+          <div class="company">
+            <div class="company-details">
+              <div class="name">LotVue LLP (Real Estate IT)</div>
+              <div class="location">Hyderabad</div>
+            </div>
+            <div class="duration">September 2019 - August 2021</div>
+            <div class="responsibilities">
+              <div>
+                Worked with clients to refine and negotiate product requirement
+                specifications, functional specifications, and product vision
+                and direction.
+              </div>
+              <div>
+                Development of new features as per customer requirements.
+              </div>
+              <div>
+                Implemented cache storage using Redis.
+              </div>
+              <div>
+                Improvement of user experience by optimizing queries.
+              </div>
+              <div>
+                Improvement of reports by refactoring angular code and
+                pagination using Pagy gem.
+              </div>
+              <div>
+                Testing basic functionality using ruby and selenium.
+              </div>
+            </div>
+          </div>
+          <div class="company">
+            <div class="company-details">
+              <div class="name">GreyCampus (EduTech IT)</div>
+              <div class="location">Hyderabad</div>
+            </div>
+            <div class="duration">May 2017 - August 2019</div>
+            <div class="responsibilities">
+              <div>
+                Developed ruby script to scrape websites using Nokogiri.
+              </div>
+              <div>
+                Developed an internal application for storing and processing
+                data provided by data extraction team.
+              </div>
+              <div>
+                Development of new features and refactoring existing features
+                for learning platform.
+              </div>
+              <div>
+                Development of LMS for efficient handling of learning content.
+              </div>
+              <div>
+                Developed widgets to display various content types(PDF, Video
+                etc).
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="education">
+          <div class="heading">Education</div>
+          <div>B.Tech, JNTUK-UCEV, Vijayanagaram</div>
+          <div>Course: Information Technology</div>
+          <div>Percentage: 75</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="section">
+          <div class="heading">Location</div>
+          <div class="city">Hyderabad</div>
+          <div class="country">India</div>
+          <div class="mobile">+91 95534 55505</div>
+          <div class="email">tejaprogramer@gmail.com</div>
+        </div>
+        <div class="section">
+          <div class="heading">Skills</div>
+          <div>Git</div>
+          <div>Ruby On Rails</div>
+          <div>Ruby</div>
+          <div>MySQL</div>
+          <div>Postgresql</div>
+          <div>HTML & CSS</div>
+          <div>JavaScript</div>
+          <div>React</div>
+        </div>
+        <div class="section">
+          <div class="heading">Links</div>
+          <a
+            href="https://www.linkedin.com/in/rvs-teja-6ba164a8/"
+            target="_blank"
+            >LinkedIn</a
+          ><br />
+          <a href="https://github.com/teja-rvs" target="_blank">Github</a>
+        </div>
+        <div class="section">
+          <div class="heading">Languages</div>
+          <div>English</div>
+          <div>Telugu</div>
+          <div>Hindi</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
