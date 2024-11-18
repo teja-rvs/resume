@@ -65,16 +65,14 @@ const Game = (function() {
         gameBoard[index] = currentPlayer;
 
         // After placing the move, check if there is a winner
+        if (movesArray.length > 3) {
+            removeFirstMove(movesArray);
+        }
         if (checkWinner()) {
             gameActive = false;
             removeHighlights();
             notifyObservers();
         } else {
-            // If no winner, remove the first move of the current player after placing the 4th item
-            if (movesArray.length > 3) {
-                removeFirstMove(movesArray);
-            }
-
             // Switch player after each move
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             notifyObservers();

@@ -36,6 +36,11 @@ body {
     pointer-events: none;
 }
 
+.cell.highlight {
+    background-color: rgba(255, 0, 0, 0.3); /* Light red background */
+    border: 2px solid red; /* Red border */
+}
+
 #status {
     margin: 10px 0;
     font-size: 20px;
