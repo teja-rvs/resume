@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,11 +33,13 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px); /* Frosted-glass effect */
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Heading styles */
         h1 {
-            font-size: 3.5em;
+            font-size: 3em;
             color: #2c3e50; /* Dark color for name */
             margin-bottom: 15px;
             letter-spacing: 2px;
@@ -46,7 +48,7 @@
         }
 
         h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-top: 30px;
             margin-bottom: 10px;
             color: #333;
@@ -57,7 +59,7 @@
 
         /* Paragraph styling */
         p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #333; /* Darker color for better contrast */
             line-height: 1.6;
             margin-top: 20px;
@@ -83,23 +85,6 @@
             color: #fff;
             background-color: #ff61a6; /* Background change on hover */
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Adding shadow on hover for clarity */
-        }
-
-        /* Remove the middle line (underline) effect on hover */
-        a::before {
-            content: none; /* No underline effect */
-        }
-
-        /* Smooth hover effect for the game links */
-        ul li a:hover {
-            color: #ffb199;
-        }
-
-        /* Resume link specific styling */
-        .resume-link {
-            font-size: 1.2em;
-            padding-top: 10px;
-            display: inline-block;
         }
 
         /* List styling */
@@ -154,41 +139,125 @@
             }
         }
 
-        /* Container padding adjustments */
-        .container p {
-            font-size: 1.1em;
-            line-height: 1.5;
+        /* Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+                line-height: 1.5;
+            }
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            a {
+                font-size: 1.1em;
+                padding: 8px 12px;
+            }
+            .resume-link {
+                font-size: 1.1em;
+            }
+            ul li {
+                font-size: 1.1em;
+            }
         }
+
+        /* Further adjustments for very small screens (iPhone SE specific, 320px wide) */
+        @media (max-width: 375px) {
+            h1 {
+                font-size: 1.8em; /* Smaller font for iPhone SE */
+                margin-bottom: 10px;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            p {
+                font-size: 0.95em;
+                line-height: 1.4;
+            }
+            .container {
+                padding: 8px;
+                margin: 5px;
+            }
+            a {
+                font-size: 1.1em;
+                padding: 6px 10px; /* Slightly smaller padding for small screens */
+            }
+            .resume-link {
+                font-size: 1em;
+            }
+            ul li {
+                font-size: 1em;
+            }
+            .separator {
+                margin: 20px 0;
+            }
+        }
+
+        /* Further fine-tuning for portrait mode iPhone SE */
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 1.6em; /* Further reduce font size */
+                margin-bottom: 8px;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            p {
+                font-size: 0.9em;
+                line-height: 1.3;
+            }
+            .container {
+                padding: 5px;
+                margin: 5px;
+            }
+            a {
+                font-size: 1em;
+                padding: 5px 8px; /* Small padding for tiny screens */
+            }
+            .resume-link {
+                font-size: 1em;
+            }
+            ul li {
+                font-size: 0.9em;
+            }
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>RVS Teja</h1>
-        <p>Welcome to my personal portfolio. Below you can find links to my resume and the games I have developed.</p>
+<div class="container">
+    <h1>RVS Teja</h1>
+    <p>Welcome to my personal portfolio. Below you can find links to my resume and the games I have developed.</p>
 
-        <h2>Resume</h2>
-        <p>
-            <a href="resume.html" class="resume-link" target="_blank">Click here to view my resume</a>
-        </p>
+    <h2>Resume</h2>
+    <p>
+        <a href="resume.html" class="resume-link" target="_blank">Click here to view my resume</a>
+    </p>
 
-        <!-- Custom gradient separator between Resume and Games -->
-        <div class="separator"></div>
+    <!-- Custom gradient separator between Resume and Games -->
+    <div class="separator"></div>
 
-        <h2>Games I Have Developed</h2>
-        <ul>
-            <li><a href="/games/tic_tac_toe/index.html" target="_blank">Tic Tac Toe</a>
-                <p class="game-description">A classical game but with a twist.</p>
-            </li>
-            <li><a href="/games/memory_cards/index.html" target="_blank">Memory Cards</a>
-                <p class="game-description">Match cards while the board rotates after each wrong guess!.</p>
-            </li>
-            <!-- Add more games as needed -->
+    <h2>Games I Have Developed</h2>
+    <ul>
+        <li><a href="/games/tic_tac_toe/index.html" target="_blank">Tic Tac Toe</a>
+            <p class="game-description">A classic game, but with no possibility of a draw.</p>
+        </li>
+        <li><a href="/games/memory_cards/index.html" target="_blank">Memory Cards</a>
+            <p class="game-description">Match cards while the board rotates after each wrong guess!.</p>
+        </li>
+        <!-- Add more games as needed -->
 
-            <!-- General Coming Soon Section with Exciting Message -->
-            <li class="coming-soon">Exciting new games are in development! <span class="exciting">Stay tuned!</span></li>
-        </ul>
-    </div>
+        <!-- General Coming Soon Section with Exciting Message -->
+        <li class="coming-soon">Exciting new games are in development! <span class="exciting">Stay tuned!</span></li>
+    </ul>
+</div>
 </body>
 
 </html>
