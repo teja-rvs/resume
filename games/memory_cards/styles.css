@@ -1,3 +1,4 @@
+/* General Body Styling */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -9,6 +10,7 @@ body {
     flex-direction: column;
 }
 
+/* Styling for the game board */
 .game-board {
     display: grid;
     grid-template-columns: repeat(4, 100px);
@@ -19,6 +21,7 @@ body {
     margin-bottom: 20px; /* Add space between the board and the button */
 }
 
+/* Styling for the individual cards */
 .card {
     width: 100px;
     height: 100px;
@@ -32,8 +35,8 @@ body {
     transition: transform 0.3s;
 }
 
-.card .front,
-.card .back {
+/* Front face of the card - fixed question mark orientation */
+.card .front {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -43,19 +46,31 @@ body {
     font-size: 24px;
     font-weight: bold;
     backface-visibility: hidden;
+    transform: rotateY(0deg); /* Ensures it stays upright */
 }
 
+/* Back face of the card */
 .card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
     background-color: #f4f4f4;
     transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 
+/* Flipped state for cards */
 .card.flipped .front {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /* Flip front when card is flipped */
 }
 
 .card.flipped .back {
-    transform: rotateY(0deg);
+    transform: rotateY(0deg); /* Show back of the card when flipped */
 }
 
 /* Style for the reset button */
@@ -72,4 +87,12 @@ body {
 
 #reset-button:hover {
     background-color: #45a049;
+}
+
+/* Styling for the move counter */
+#move-counter {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
 }
