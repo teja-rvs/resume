@@ -34,36 +34,58 @@ const Game = (function() {
     };
 
     // Private method to handle the move logic
+
+    const addHighlightToCell = (index) => {
+        const cellElement = document.querySelector(`#board .cell:nth-child(${index + 1})`);
+        cellElement.classList.add('highlight');
+    };
+
+    const removeHighlights = () => {
+        const highlightedCells = document.querySelectorAll('.highlight');
+        highlightedCells.forEach(cell => {
+            cell.classList.remove('highlight');
+        });
+    };
+
     const makeMove = (index) => {
         if (gameBoard[index] || !gameActive) return;
 
-        gameBoard[index] = currentPlayer;
-        if (currentPlayer === 'X') {
-            xMoves.push(index);
-        } else {
-            oMoves.push(index);
+        // Track the current move for the player
+        let movesArray = currentPlayer === 'X' ? xMoves : oMoves;
+        movesArray.push(index);
+
+        // If the current player has placed 3 moves, highlight the first move of the opponent
+        if (xMoves.length > 3 || oMoves.length >= 3) {
+            let opponentMovesArray = currentPlayer === 'X' ? oMoves : xMoves;
+            removeHighlights(); // Remove previous highlights
+            addHighlightToCell(opponentMovesArray[0]); // Highlight the opponent's first move
         }
 
-        // Check for winner after each move
+        // Place the current player's move
+        gameBoard[index] = currentPlayer;
+
+        // After placing the move, check if there is a winner
         if (checkWinner()) {
             gameActive = false;
+            removeHighlights();
             notifyObservers();
         } else {
-            // If no winner and player has made 5 moves, remove the first move
-            if ((currentPlayer === 'X' && xMoves.length > 4) || (currentPlayer === 'O' && oMoves.length > 4)) {
-                removeFirstMove();
+            // If no winner, remove the first move of the current player after placing the 4th item
+            if (movesArray.length > 3) {
+                removeFirstMove(movesArray);
             }
-            // Switch to next player
+
+            // Switch player after each move
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             notifyObservers();
         }
     };
 
-    // Private method to remove the first move after the 5th move
-    const removeFirstMove = () => {
-        const movesArray = currentPlayer === 'X' ? xMoves : oMoves;
-        const firstMoveIndex = movesArray.shift();
-        gameBoard[firstMoveIndex] = null;
+    // Private method to remove the first move of the current player
+    const removeFirstMove = (movesArray) => {
+        const firstMoveIndex = movesArray[0]; // Get the first move
+        gameBoard[firstMoveIndex] = null; // Remove the first move from the board
+        movesArray.shift(); // Remove the first move from the array
         notifyObservers();
     };
 
@@ -74,6 +96,7 @@ const Game = (function() {
         oMoves = [];
         currentPlayer = 'X';
         gameActive = true;
+        removeHighlights(); // Clear any existing highlights
         notifyObservers();
     };
 
@@ -106,7 +129,7 @@ class UIObserver {
     updateBoard(gameBoard) {
         gameBoard.forEach((cell, index) => {
             const cellElement = this.boardElement.children[index];
-            cellElement.textContent = cell || '';
+            cellElement.textContent = cell || ''; // Ensure to update text content properly
             if (cell) {
                 cellElement.classList.add('taken');
             } else {
@@ -117,10 +140,13 @@ class UIObserver {
 
     // Update the status UI
     updateStatus() {
+        const playerXName = document.getElementById('player-x-name')?.value || 'Player X';
+        const playerOName = document.getElementById('player-o-name')?.value || 'Player O';
+
         if (!Game.isGameActive()) {
-            this.statusElement.textContent = `${Game.getCurrentPlayer()} Wins!`;
+            this.statusElement.textContent = `${Game.getCurrentPlayer() === 'X' ? playerXName : playerOName} Wins!`;
         } else {
-            this.statusElement.textContent = `${Game.getCurrentPlayer()}'s Turn`;
+            this.statusElement.textContent = `${Game.getCurrentPlayer() === 'X' ? playerXName : playerOName}'s Turn`;
         }
     }
 }
